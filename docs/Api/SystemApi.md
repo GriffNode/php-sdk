@@ -1,6 +1,6 @@
-# CryptoGate\SystemApi
+# GriffNode\SystemApi
 
-All URIs are relative to https://api.cryptogate.live/v1, except if the operation defines another base path.
+All URIs are relative to https://api.griffnode.com/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -11,7 +11,7 @@ All URIs are relative to https://api.cryptogate.live/v1, except if the operation
 ## `getHealth()`
 
 ```php
-getHealth(): \CryptoGate\Model\GetHealth200Response
+getHealth(): \GriffNode\Model\GetHealth200Response
 ```
 
 API health check
@@ -24,7 +24,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new CryptoGate\Api\SystemApi(
+$apiInstance = new GriffNode\Api\SystemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\CryptoGate\Model\GetHealth200Response**](../Model/GetHealth200Response.md)
+[**\GriffNode\Model\GetHealth200Response**](../Model/GetHealth200Response.md)
 
 ### Authorization
 
@@ -77,14 +77,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new CryptoGate\Api\SystemApi(
+$apiInstance = new GriffNode\Api\SystemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
 $pk = 'pk_example'; // string | Publishable key, pk_live_… / pk_test_…
 $amount = 'amount_example'; // string | Fiat amount (≥ 1.00 USD equivalent).
-$crypto = new \CryptoGate\Model\\CryptoGate\Model\CryptoSymbol(); // \CryptoGate\Model\CryptoSymbol
+$crypto = new \GriffNode\Model\\GriffNode\Model\CryptoSymbol(); // \GriffNode\Model\CryptoSymbol
 $link = 'link_example'; // string | Payment-link slug for attribution.
 
 try {
@@ -100,7 +100,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **pk** | **string**| Publishable key, pk_live_… / pk_test_… | |
 | **amount** | **string**| Fiat amount (≥ 1.00 USD equivalent). | |
-| **crypto** | [**\CryptoGate\Model\CryptoSymbol**](../Model/.md)|  | |
+| **crypto** | [**\GriffNode\Model\CryptoSymbol**](../Model/.md)|  | |
 | **link** | **string**| Payment-link slug for attribution. | [optional] |
 
 ### Return type

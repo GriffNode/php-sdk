@@ -4,13 +4,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Api;
+namespace GriffNode\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use CryptoGate\ApiException;
-use CryptoGate\Configuration;
-use CryptoGate\HeaderSelector;
-use CryptoGate\ObjectSerializer;
+use GriffNode\ApiException;
+use GriffNode\Configuration;
+use GriffNode\HeaderSelector;
+use GriffNode\ObjectSerializer;
 
 /**
  * TransactionsApi Class Doc Comment
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -136,13 +136,13 @@ class TransactionsApi
      *
      * Create an itemized transaction (Professional/Enterprise plans)
      *
-     * @param  \CryptoGate\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request create_detailed_transaction_request (required)
+     * @param  \GriffNode\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request create_detailed_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDetailedTransaction'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\TransactionEnvelope|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function createDetailedTransaction($create_detailed_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createDetailedTransaction'][0])
     {
@@ -155,13 +155,13 @@ class TransactionsApi
      *
      * Create an itemized transaction (Professional/Enterprise plans)
      *
-     * @param  \CryptoGate\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request (required)
+     * @param  \GriffNode\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDetailedTransaction'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\TransactionEnvelope|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDetailedTransactionWithHttpInfo($create_detailed_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createDetailedTransaction'][0])
     {
@@ -192,11 +192,11 @@ class TransactionsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\CryptoGate\Model\TransactionEnvelope' === '\SplFileObject') {
+                    if ('\GriffNode\Model\TransactionEnvelope' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\TransactionEnvelope' !== 'string') {
+                        if ('\GriffNode\Model\TransactionEnvelope' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -214,16 +214,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\TransactionEnvelope', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\TransactionEnvelope', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -241,16 +241,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -268,16 +268,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 402:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -295,16 +295,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -322,16 +322,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -349,7 +349,7 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -368,7 +368,7 @@ class TransactionsApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\TransactionEnvelope';
+            $returnType = '\GriffNode\Model\TransactionEnvelope';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -401,7 +401,7 @@ class TransactionsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\TransactionEnvelope',
+                        '\GriffNode\Model\TransactionEnvelope',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -409,7 +409,7 @@ class TransactionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -417,7 +417,7 @@ class TransactionsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -425,7 +425,7 @@ class TransactionsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -433,7 +433,7 @@ class TransactionsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +441,7 @@ class TransactionsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -456,7 +456,7 @@ class TransactionsApi
      *
      * Create an itemized transaction (Professional/Enterprise plans)
      *
-     * @param  \CryptoGate\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request (required)
+     * @param  \GriffNode\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDetailedTransaction'] to see the possible values for this operation
      *
@@ -478,7 +478,7 @@ class TransactionsApi
      *
      * Create an itemized transaction (Professional/Enterprise plans)
      *
-     * @param  \CryptoGate\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request (required)
+     * @param  \GriffNode\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDetailedTransaction'] to see the possible values for this operation
      *
@@ -487,7 +487,7 @@ class TransactionsApi
      */
     public function createDetailedTransactionAsyncWithHttpInfo($create_detailed_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createDetailedTransaction'][0])
     {
-        $returnType = '\CryptoGate\Model\TransactionEnvelope';
+        $returnType = '\GriffNode\Model\TransactionEnvelope';
         $request = $this->createDetailedTransactionRequest($create_detailed_transaction_request, $x_idempotency_key, $contentType);
 
         return $this->client
@@ -529,7 +529,7 @@ class TransactionsApi
     /**
      * Create request for operation 'createDetailedTransaction'
      *
-     * @param  \CryptoGate\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request (required)
+     * @param  \GriffNode\Model\CreateDetailedTransactionRequest $create_detailed_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDetailedTransaction'] to see the possible values for this operation
      *
@@ -632,13 +632,13 @@ class TransactionsApi
      *
      * Create a payment transaction
      *
-     * @param  \CryptoGate\Model\CreateTransactionRequest $create_transaction_request create_transaction_request (required)
+     * @param  \GriffNode\Model\CreateTransactionRequest $create_transaction_request create_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTransaction'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\TransactionEnvelope|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\InlineObject|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\InlineObject|\GriffNode\Model\Error
      */
     public function createTransaction($create_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createTransaction'][0])
     {
@@ -651,13 +651,13 @@ class TransactionsApi
      *
      * Create a payment transaction
      *
-     * @param  \CryptoGate\Model\CreateTransactionRequest $create_transaction_request (required)
+     * @param  \GriffNode\Model\CreateTransactionRequest $create_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTransaction'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\TransactionEnvelope|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\InlineObject|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\InlineObject|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTransactionWithHttpInfo($create_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createTransaction'][0])
     {
@@ -688,11 +688,11 @@ class TransactionsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\CryptoGate\Model\TransactionEnvelope' === '\SplFileObject') {
+                    if ('\GriffNode\Model\TransactionEnvelope' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\TransactionEnvelope' !== 'string') {
+                        if ('\GriffNode\Model\TransactionEnvelope' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -710,16 +710,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\TransactionEnvelope', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\TransactionEnvelope', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -737,16 +737,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -764,16 +764,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 402:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -791,16 +791,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -818,16 +818,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\CryptoGate\Model\InlineObject' === '\SplFileObject') {
+                    if ('\GriffNode\Model\InlineObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\InlineObject' !== 'string') {
+                        if ('\GriffNode\Model\InlineObject' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -845,16 +845,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\InlineObject', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\InlineObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -872,7 +872,7 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -891,7 +891,7 @@ class TransactionsApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\TransactionEnvelope';
+            $returnType = '\GriffNode\Model\TransactionEnvelope';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -924,7 +924,7 @@ class TransactionsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\TransactionEnvelope',
+                        '\GriffNode\Model\TransactionEnvelope',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -932,7 +932,7 @@ class TransactionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -940,7 +940,7 @@ class TransactionsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -948,7 +948,7 @@ class TransactionsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -956,7 +956,7 @@ class TransactionsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -964,7 +964,7 @@ class TransactionsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\InlineObject',
+                        '\GriffNode\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -972,7 +972,7 @@ class TransactionsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -987,7 +987,7 @@ class TransactionsApi
      *
      * Create a payment transaction
      *
-     * @param  \CryptoGate\Model\CreateTransactionRequest $create_transaction_request (required)
+     * @param  \GriffNode\Model\CreateTransactionRequest $create_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTransaction'] to see the possible values for this operation
      *
@@ -1009,7 +1009,7 @@ class TransactionsApi
      *
      * Create a payment transaction
      *
-     * @param  \CryptoGate\Model\CreateTransactionRequest $create_transaction_request (required)
+     * @param  \GriffNode\Model\CreateTransactionRequest $create_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTransaction'] to see the possible values for this operation
      *
@@ -1018,7 +1018,7 @@ class TransactionsApi
      */
     public function createTransactionAsyncWithHttpInfo($create_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createTransaction'][0])
     {
-        $returnType = '\CryptoGate\Model\TransactionEnvelope';
+        $returnType = '\GriffNode\Model\TransactionEnvelope';
         $request = $this->createTransactionRequest($create_transaction_request, $x_idempotency_key, $contentType);
 
         return $this->client
@@ -1060,7 +1060,7 @@ class TransactionsApi
     /**
      * Create request for operation 'createTransaction'
      *
-     * @param  \CryptoGate\Model\CreateTransactionRequest $create_transaction_request (required)
+     * @param  \GriffNode\Model\CreateTransactionRequest $create_transaction_request (required)
      * @param  string $x_idempotency_key Optional unique key for a create request (e.g. a UUID). A retried create with the same key returns the original transaction instead of creating a duplicate — send it on every create so a network retry can&#39;t double-charge the customer. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTransaction'] to see the possible values for this operation
      *
@@ -1166,9 +1166,9 @@ class TransactionsApi
      * @param  string $transaction_id transaction_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransaction'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\TransactionEnvelope|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function getTransaction($transaction_id, string $contentType = self::contentTypes['getTransaction'][0])
     {
@@ -1184,9 +1184,9 @@ class TransactionsApi
      * @param  string $transaction_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransaction'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\TransactionEnvelope|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionWithHttpInfo($transaction_id, string $contentType = self::contentTypes['getTransaction'][0])
     {
@@ -1217,11 +1217,11 @@ class TransactionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\TransactionEnvelope' === '\SplFileObject') {
+                    if ('\GriffNode\Model\TransactionEnvelope' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\TransactionEnvelope' !== 'string') {
+                        if ('\GriffNode\Model\TransactionEnvelope' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1239,16 +1239,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\TransactionEnvelope', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\TransactionEnvelope', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1266,16 +1266,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1293,16 +1293,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1320,7 +1320,7 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1339,7 +1339,7 @@ class TransactionsApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\TransactionEnvelope';
+            $returnType = '\GriffNode\Model\TransactionEnvelope';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1372,7 +1372,7 @@ class TransactionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\TransactionEnvelope',
+                        '\GriffNode\Model\TransactionEnvelope',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1380,7 +1380,7 @@ class TransactionsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1388,7 +1388,7 @@ class TransactionsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1396,7 +1396,7 @@ class TransactionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1440,7 +1440,7 @@ class TransactionsApi
      */
     public function getTransactionAsyncWithHttpInfo($transaction_id, string $contentType = self::contentTypes['getTransaction'][0])
     {
-        $returnType = '\CryptoGate\Model\TransactionEnvelope';
+        $returnType = '\GriffNode\Model\TransactionEnvelope';
         $request = $this->getTransactionRequest($transaction_id, $contentType);
 
         return $this->client
@@ -1582,13 +1582,13 @@ class TransactionsApi
      *
      * @param  int $limit limit (optional, default to 20)
      * @param  int $offset offset (optional, default to 0)
-     * @param  \CryptoGate\Model\TransactionStatus $status status (optional)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto crypto (optional)
+     * @param  \GriffNode\Model\TransactionStatus $status status (optional)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto crypto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTransactions'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\ListTransactions200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\ListTransactions200Response|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function listTransactions($limit = 20, $offset = 0, $status = null, $crypto = null, string $contentType = self::contentTypes['listTransactions'][0])
     {
@@ -1603,13 +1603,13 @@ class TransactionsApi
      *
      * @param  int $limit (optional, default to 20)
      * @param  int $offset (optional, default to 0)
-     * @param  \CryptoGate\Model\TransactionStatus $status (optional)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto (optional)
+     * @param  \GriffNode\Model\TransactionStatus $status (optional)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTransactions'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\ListTransactions200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\ListTransactions200Response|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTransactionsWithHttpInfo($limit = 20, $offset = 0, $status = null, $crypto = null, string $contentType = self::contentTypes['listTransactions'][0])
     {
@@ -1640,11 +1640,11 @@ class TransactionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\ListTransactions200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\ListTransactions200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\ListTransactions200Response' !== 'string') {
+                        if ('\GriffNode\Model\ListTransactions200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1662,16 +1662,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\ListTransactions200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\ListTransactions200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1689,16 +1689,16 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1716,7 +1716,7 @@ class TransactionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1735,7 +1735,7 @@ class TransactionsApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\ListTransactions200Response';
+            $returnType = '\GriffNode\Model\ListTransactions200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1768,7 +1768,7 @@ class TransactionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\ListTransactions200Response',
+                        '\GriffNode\Model\ListTransactions200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1776,7 +1776,7 @@ class TransactionsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1784,7 +1784,7 @@ class TransactionsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1801,8 +1801,8 @@ class TransactionsApi
      *
      * @param  int $limit (optional, default to 20)
      * @param  int $offset (optional, default to 0)
-     * @param  \CryptoGate\Model\TransactionStatus $status (optional)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto (optional)
+     * @param  \GriffNode\Model\TransactionStatus $status (optional)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1825,8 +1825,8 @@ class TransactionsApi
      *
      * @param  int $limit (optional, default to 20)
      * @param  int $offset (optional, default to 0)
-     * @param  \CryptoGate\Model\TransactionStatus $status (optional)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto (optional)
+     * @param  \GriffNode\Model\TransactionStatus $status (optional)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1834,7 +1834,7 @@ class TransactionsApi
      */
     public function listTransactionsAsyncWithHttpInfo($limit = 20, $offset = 0, $status = null, $crypto = null, string $contentType = self::contentTypes['listTransactions'][0])
     {
-        $returnType = '\CryptoGate\Model\ListTransactions200Response';
+        $returnType = '\GriffNode\Model\ListTransactions200Response';
         $request = $this->listTransactionsRequest($limit, $offset, $status, $crypto, $contentType);
 
         return $this->client
@@ -1878,8 +1878,8 @@ class TransactionsApi
      *
      * @param  int $limit (optional, default to 20)
      * @param  int $offset (optional, default to 0)
-     * @param  \CryptoGate\Model\TransactionStatus $status (optional)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto (optional)
+     * @param  \GriffNode\Model\TransactionStatus $status (optional)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -4,13 +4,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Api;
+namespace GriffNode\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use CryptoGate\ApiException;
-use CryptoGate\Configuration;
-use CryptoGate\HeaderSelector;
-use CryptoGate\ObjectSerializer;
+use GriffNode\ApiException;
+use GriffNode\Configuration;
+use GriffNode\HeaderSelector;
+use GriffNode\ObjectSerializer;
 
 /**
  * BillingApi Class Doc Comment
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -127,12 +127,12 @@ class BillingApi
      *
      * Start a plan upgrade or account top-up
      *
-     * @param  \CryptoGate\Model\CreateBillingCheckoutRequest $create_billing_checkout_request create_billing_checkout_request (required)
+     * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\TransactionEnvelope|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function createBillingCheckout($create_billing_checkout_request, string $contentType = self::contentTypes['createBillingCheckout'][0])
     {
@@ -145,12 +145,12 @@ class BillingApi
      *
      * Start a plan upgrade or account top-up
      *
-     * @param  \CryptoGate\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
+     * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\TransactionEnvelope|\CryptoGate\Model\Error|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBillingCheckoutWithHttpInfo($create_billing_checkout_request, string $contentType = self::contentTypes['createBillingCheckout'][0])
     {
@@ -181,11 +181,11 @@ class BillingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\CryptoGate\Model\TransactionEnvelope' === '\SplFileObject') {
+                    if ('\GriffNode\Model\TransactionEnvelope' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\TransactionEnvelope' !== 'string') {
+                        if ('\GriffNode\Model\TransactionEnvelope' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -203,16 +203,16 @@ class BillingApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\TransactionEnvelope', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\TransactionEnvelope', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -230,16 +230,16 @@ class BillingApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 402:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -257,16 +257,16 @@ class BillingApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -284,7 +284,7 @@ class BillingApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -303,7 +303,7 @@ class BillingApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\TransactionEnvelope';
+            $returnType = '\GriffNode\Model\TransactionEnvelope';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -336,7 +336,7 @@ class BillingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\TransactionEnvelope',
+                        '\GriffNode\Model\TransactionEnvelope',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -344,7 +344,7 @@ class BillingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -352,7 +352,7 @@ class BillingApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -360,7 +360,7 @@ class BillingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -375,7 +375,7 @@ class BillingApi
      *
      * Start a plan upgrade or account top-up
      *
-     * @param  \CryptoGate\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
+     * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -396,7 +396,7 @@ class BillingApi
      *
      * Start a plan upgrade or account top-up
      *
-     * @param  \CryptoGate\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
+     * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -404,7 +404,7 @@ class BillingApi
      */
     public function createBillingCheckoutAsyncWithHttpInfo($create_billing_checkout_request, string $contentType = self::contentTypes['createBillingCheckout'][0])
     {
-        $returnType = '\CryptoGate\Model\TransactionEnvelope';
+        $returnType = '\GriffNode\Model\TransactionEnvelope';
         $request = $this->createBillingCheckoutRequest($create_billing_checkout_request, $contentType);
 
         return $this->client
@@ -446,7 +446,7 @@ class BillingApi
     /**
      * Create request for operation 'createBillingCheckout'
      *
-     * @param  \CryptoGate\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
+     * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

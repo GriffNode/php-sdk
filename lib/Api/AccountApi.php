@@ -4,13 +4,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Api;
+namespace GriffNode\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use CryptoGate\ApiException;
-use CryptoGate\Configuration;
-use CryptoGate\HeaderSelector;
-use CryptoGate\ObjectSerializer;
+use GriffNode\ApiException;
+use GriffNode\Configuration;
+use GriffNode\HeaderSelector;
+use GriffNode\ObjectSerializer;
 
 /**
  * AccountApi Class Doc Comment
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -141,9 +141,9 @@ class AccountApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccount'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\GetAccount200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\GetAccount200Response|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function getAccount(string $contentType = self::contentTypes['getAccount'][0])
     {
@@ -158,9 +158,9 @@ class AccountApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccount'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\GetAccount200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\GetAccount200Response|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountWithHttpInfo(string $contentType = self::contentTypes['getAccount'][0])
     {
@@ -191,11 +191,11 @@ class AccountApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\GetAccount200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\GetAccount200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\GetAccount200Response' !== 'string') {
+                        if ('\GriffNode\Model\GetAccount200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -213,16 +213,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\GetAccount200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\GetAccount200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -240,16 +240,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -267,7 +267,7 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -286,7 +286,7 @@ class AccountApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\GetAccount200Response';
+            $returnType = '\GriffNode\Model\GetAccount200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -319,7 +319,7 @@ class AccountApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\GetAccount200Response',
+                        '\GriffNode\Model\GetAccount200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -327,7 +327,7 @@ class AccountApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -335,7 +335,7 @@ class AccountApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -377,7 +377,7 @@ class AccountApi
      */
     public function getAccountAsyncWithHttpInfo(string $contentType = self::contentTypes['getAccount'][0])
     {
-        $returnType = '\CryptoGate\Model\GetAccount200Response';
+        $returnType = '\GriffNode\Model\GetAccount200Response';
         $request = $this->getAccountRequest($contentType);
 
         return $this->client
@@ -503,9 +503,9 @@ class AccountApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStats'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\GetStats200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\GetStats200Response|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function getStats(string $contentType = self::contentTypes['getStats'][0])
     {
@@ -520,9 +520,9 @@ class AccountApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStats'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\GetStats200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\GetStats200Response|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStatsWithHttpInfo(string $contentType = self::contentTypes['getStats'][0])
     {
@@ -553,11 +553,11 @@ class AccountApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\GetStats200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\GetStats200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\GetStats200Response' !== 'string') {
+                        if ('\GriffNode\Model\GetStats200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -575,16 +575,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\GetStats200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\GetStats200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -602,16 +602,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -629,7 +629,7 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -648,7 +648,7 @@ class AccountApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\GetStats200Response';
+            $returnType = '\GriffNode\Model\GetStats200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -681,7 +681,7 @@ class AccountApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\GetStats200Response',
+                        '\GriffNode\Model\GetStats200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -689,7 +689,7 @@ class AccountApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -697,7 +697,7 @@ class AccountApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -739,7 +739,7 @@ class AccountApi
      */
     public function getStatsAsyncWithHttpInfo(string $contentType = self::contentTypes['getStats'][0])
     {
-        $returnType = '\CryptoGate\Model\GetStats200Response';
+        $returnType = '\GriffNode\Model\GetStats200Response';
         $request = $this->getStatsRequest($contentType);
 
         return $this->client
@@ -865,9 +865,9 @@ class AccountApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBalances'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\ListBalances200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\ListBalances200Response|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function listBalances(string $contentType = self::contentTypes['listBalances'][0])
     {
@@ -882,9 +882,9 @@ class AccountApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBalances'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\ListBalances200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\ListBalances200Response|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listBalancesWithHttpInfo(string $contentType = self::contentTypes['listBalances'][0])
     {
@@ -915,11 +915,11 @@ class AccountApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\ListBalances200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\ListBalances200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\ListBalances200Response' !== 'string') {
+                        if ('\GriffNode\Model\ListBalances200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -937,16 +937,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\ListBalances200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\ListBalances200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -964,16 +964,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -991,7 +991,7 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1010,7 +1010,7 @@ class AccountApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\ListBalances200Response';
+            $returnType = '\GriffNode\Model\ListBalances200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1043,7 +1043,7 @@ class AccountApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\ListBalances200Response',
+                        '\GriffNode\Model\ListBalances200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1051,7 +1051,7 @@ class AccountApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1059,7 +1059,7 @@ class AccountApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1101,7 +1101,7 @@ class AccountApi
      */
     public function listBalancesAsyncWithHttpInfo(string $contentType = self::contentTypes['listBalances'][0])
     {
-        $returnType = '\CryptoGate\Model\ListBalances200Response';
+        $returnType = '\GriffNode\Model\ListBalances200Response';
         $request = $this->listBalancesRequest($contentType);
 
         return $this->client
@@ -1223,15 +1223,15 @@ class AccountApi
     /**
      * Operation listInvoices
      *
-     * CryptoGate billing invoices (platform ↔ merchant)
+     * GriffNode billing invoices (platform ↔ merchant)
      *
      * @param  int $limit limit (optional, default to 20)
      * @param  int $offset offset (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInvoices'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\ListInvoices200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\ListInvoices200Response|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function listInvoices($limit = 20, $offset = 0, string $contentType = self::contentTypes['listInvoices'][0])
     {
@@ -1242,15 +1242,15 @@ class AccountApi
     /**
      * Operation listInvoicesWithHttpInfo
      *
-     * CryptoGate billing invoices (platform ↔ merchant)
+     * GriffNode billing invoices (platform ↔ merchant)
      *
      * @param  int $limit (optional, default to 20)
      * @param  int $offset (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInvoices'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\ListInvoices200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\ListInvoices200Response|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInvoicesWithHttpInfo($limit = 20, $offset = 0, string $contentType = self::contentTypes['listInvoices'][0])
     {
@@ -1281,11 +1281,11 @@ class AccountApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\ListInvoices200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\ListInvoices200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\ListInvoices200Response' !== 'string') {
+                        if ('\GriffNode\Model\ListInvoices200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1303,16 +1303,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\ListInvoices200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\ListInvoices200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1330,16 +1330,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1357,7 +1357,7 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1376,7 +1376,7 @@ class AccountApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\ListInvoices200Response';
+            $returnType = '\GriffNode\Model\ListInvoices200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1409,7 +1409,7 @@ class AccountApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\ListInvoices200Response',
+                        '\GriffNode\Model\ListInvoices200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1417,7 +1417,7 @@ class AccountApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1425,7 +1425,7 @@ class AccountApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1438,7 +1438,7 @@ class AccountApi
     /**
      * Operation listInvoicesAsync
      *
-     * CryptoGate billing invoices (platform ↔ merchant)
+     * GriffNode billing invoices (platform ↔ merchant)
      *
      * @param  int $limit (optional, default to 20)
      * @param  int $offset (optional, default to 0)
@@ -1460,7 +1460,7 @@ class AccountApi
     /**
      * Operation listInvoicesAsyncWithHttpInfo
      *
-     * CryptoGate billing invoices (platform ↔ merchant)
+     * GriffNode billing invoices (platform ↔ merchant)
      *
      * @param  int $limit (optional, default to 20)
      * @param  int $offset (optional, default to 0)
@@ -1471,7 +1471,7 @@ class AccountApi
      */
     public function listInvoicesAsyncWithHttpInfo($limit = 20, $offset = 0, string $contentType = self::contentTypes['listInvoices'][0])
     {
-        $returnType = '\CryptoGate\Model\ListInvoices200Response';
+        $returnType = '\GriffNode\Model\ListInvoices200Response';
         $request = $this->listInvoicesRequest($limit, $offset, $contentType);
 
         return $this->client
@@ -1628,9 +1628,9 @@ class AccountApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPlans'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\ListPlans200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\ListPlans200Response|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function listPlans(string $contentType = self::contentTypes['listPlans'][0])
     {
@@ -1645,9 +1645,9 @@ class AccountApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPlans'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\ListPlans200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\ListPlans200Response|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listPlansWithHttpInfo(string $contentType = self::contentTypes['listPlans'][0])
     {
@@ -1678,11 +1678,11 @@ class AccountApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\ListPlans200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\ListPlans200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\ListPlans200Response' !== 'string') {
+                        if ('\GriffNode\Model\ListPlans200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1700,16 +1700,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\ListPlans200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\ListPlans200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1727,16 +1727,16 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1754,7 +1754,7 @@ class AccountApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1773,7 +1773,7 @@ class AccountApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\ListPlans200Response';
+            $returnType = '\GriffNode\Model\ListPlans200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1806,7 +1806,7 @@ class AccountApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\ListPlans200Response',
+                        '\GriffNode\Model\ListPlans200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1814,7 +1814,7 @@ class AccountApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1822,7 +1822,7 @@ class AccountApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1864,7 +1864,7 @@ class AccountApi
      */
     public function listPlansAsyncWithHttpInfo(string $contentType = self::contentTypes['listPlans'][0])
     {
-        $returnType = '\CryptoGate\Model\ListPlans200Response';
+        $returnType = '\GriffNode\Model\ListPlans200Response';
         $request = $this->listPlansRequest($contentType);
 
         return $this->client

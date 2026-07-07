@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tier** | [**\CryptoGate\Model\PlanTier**](PlanTier.md) |  | [optional]
+**tier** | [**\GriffNode\Model\PlanTier**](PlanTier.md) |  | [optional]
 **billing_cycle** | **string** |  | [optional]
 **auto_renewal** | **bool** |  | [optional]
 **expires_at** | **\DateTime** |  | [optional]

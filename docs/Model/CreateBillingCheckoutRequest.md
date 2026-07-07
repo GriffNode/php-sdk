@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tier** | [**\CryptoGate\Model\PlanTier**](PlanTier.md) |  |
+**tier** | [**\GriffNode\Model\PlanTier**](PlanTier.md) |  |
 **billing_months** | **int** |  | [optional] [default to 1]
 **payment_method** | **string** |  | [optional] [default to 'crypto']
 

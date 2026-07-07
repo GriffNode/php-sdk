@@ -4,13 +4,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Api;
+namespace GriffNode\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use CryptoGate\ApiException;
-use CryptoGate\Configuration;
-use CryptoGate\HeaderSelector;
-use CryptoGate\ObjectSerializer;
+use GriffNode\ApiException;
+use GriffNode\Configuration;
+use GriffNode\HeaderSelector;
+use GriffNode\ObjectSerializer;
 
 /**
  * MarketDataApi Class Doc Comment
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -135,9 +135,9 @@ class MarketDataApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPrices'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\GetPrices200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\GetPrices200Response|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function getPrices(string $contentType = self::contentTypes['getPrices'][0])
     {
@@ -152,9 +152,9 @@ class MarketDataApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPrices'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\GetPrices200Response|\CryptoGate\Model\Error|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\GetPrices200Response|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPricesWithHttpInfo(string $contentType = self::contentTypes['getPrices'][0])
     {
@@ -185,11 +185,11 @@ class MarketDataApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\GetPrices200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\GetPrices200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\GetPrices200Response' !== 'string') {
+                        if ('\GriffNode\Model\GetPrices200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -207,16 +207,16 @@ class MarketDataApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\GetPrices200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\GetPrices200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -234,16 +234,16 @@ class MarketDataApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -261,7 +261,7 @@ class MarketDataApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -280,7 +280,7 @@ class MarketDataApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\GetPrices200Response';
+            $returnType = '\GriffNode\Model\GetPrices200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -313,7 +313,7 @@ class MarketDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\GetPrices200Response',
+                        '\GriffNode\Model\GetPrices200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -321,7 +321,7 @@ class MarketDataApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -329,7 +329,7 @@ class MarketDataApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -371,7 +371,7 @@ class MarketDataApi
      */
     public function getPricesAsyncWithHttpInfo(string $contentType = self::contentTypes['getPrices'][0])
     {
-        $returnType = '\CryptoGate\Model\GetPrices200Response';
+        $returnType = '\GriffNode\Model\GetPrices200Response';
         $request = $this->getPricesRequest($contentType);
 
         return $this->client
@@ -497,9 +497,9 @@ class MarketDataApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCryptocurrencies'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\ListCryptocurrencies200Response|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\ListCryptocurrencies200Response|\GriffNode\Model\Error
      */
     public function listCryptocurrencies(string $contentType = self::contentTypes['listCryptocurrencies'][0])
     {
@@ -514,9 +514,9 @@ class MarketDataApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCryptocurrencies'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\ListCryptocurrencies200Response|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\ListCryptocurrencies200Response|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCryptocurrenciesWithHttpInfo(string $contentType = self::contentTypes['listCryptocurrencies'][0])
     {
@@ -547,11 +547,11 @@ class MarketDataApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\ListCryptocurrencies200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\ListCryptocurrencies200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\ListCryptocurrencies200Response' !== 'string') {
+                        if ('\GriffNode\Model\ListCryptocurrencies200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -569,16 +569,16 @@ class MarketDataApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\ListCryptocurrencies200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\ListCryptocurrencies200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -596,7 +596,7 @@ class MarketDataApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -615,7 +615,7 @@ class MarketDataApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\ListCryptocurrencies200Response';
+            $returnType = '\GriffNode\Model\ListCryptocurrencies200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -648,7 +648,7 @@ class MarketDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\ListCryptocurrencies200Response',
+                        '\GriffNode\Model\ListCryptocurrencies200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -656,7 +656,7 @@ class MarketDataApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -698,7 +698,7 @@ class MarketDataApi
      */
     public function listCryptocurrenciesAsyncWithHttpInfo(string $contentType = self::contentTypes['listCryptocurrencies'][0])
     {
-        $returnType = '\CryptoGate\Model\ListCryptocurrencies200Response';
+        $returnType = '\GriffNode\Model\ListCryptocurrencies200Response';
         $request = $this->listCryptocurrenciesRequest($contentType);
 
         return $this->client
@@ -824,9 +824,9 @@ class MarketDataApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMerchantCryptocurrencies'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\ListCryptocurrencies200Response|\CryptoGate\Model\Error
+     * @return \GriffNode\Model\ListCryptocurrencies200Response|\GriffNode\Model\Error
      */
     public function listMerchantCryptocurrencies(string $contentType = self::contentTypes['listMerchantCryptocurrencies'][0])
     {
@@ -841,9 +841,9 @@ class MarketDataApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMerchantCryptocurrencies'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\ListCryptocurrencies200Response|\CryptoGate\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\ListCryptocurrencies200Response|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listMerchantCryptocurrenciesWithHttpInfo(string $contentType = self::contentTypes['listMerchantCryptocurrencies'][0])
     {
@@ -874,11 +874,11 @@ class MarketDataApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\ListCryptocurrencies200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\ListCryptocurrencies200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\ListCryptocurrencies200Response' !== 'string') {
+                        if ('\GriffNode\Model\ListCryptocurrencies200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -896,16 +896,16 @@ class MarketDataApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\ListCryptocurrencies200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\ListCryptocurrencies200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\CryptoGate\Model\Error' === '\SplFileObject') {
+                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\Error' !== 'string') {
+                        if ('\GriffNode\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -923,7 +923,7 @@ class MarketDataApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -942,7 +942,7 @@ class MarketDataApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\ListCryptocurrencies200Response';
+            $returnType = '\GriffNode\Model\ListCryptocurrencies200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -975,7 +975,7 @@ class MarketDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\ListCryptocurrencies200Response',
+                        '\GriffNode\Model\ListCryptocurrencies200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -983,7 +983,7 @@ class MarketDataApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1025,7 +1025,7 @@ class MarketDataApi
      */
     public function listMerchantCryptocurrenciesAsyncWithHttpInfo(string $contentType = self::contentTypes['listMerchantCryptocurrencies'][0])
     {
-        $returnType = '\CryptoGate\Model\ListCryptocurrencies200Response';
+        $returnType = '\GriffNode\Model\ListCryptocurrencies200Response';
         $request = $this->listMerchantCryptocurrenciesRequest($contentType);
 
         return $this->client

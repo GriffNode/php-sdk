@@ -1,6 +1,6 @@
-# CryptoGate\MarketDataApi
+# GriffNode\MarketDataApi
 
-All URIs are relative to https://api.cryptogate.live/v1, except if the operation defines another base path.
+All URIs are relative to https://api.griffnode.com/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -12,7 +12,7 @@ All URIs are relative to https://api.cryptogate.live/v1, except if the operation
 ## `getPrices()`
 
 ```php
-getPrices(): \CryptoGate\Model\GetPrices200Response
+getPrices(): \GriffNode\Model\GetPrices200Response
 ```
 
 Current crypto and fiat exchange rates (USD-denominated)
@@ -25,10 +25,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\MarketDataApi(
+$apiInstance = new GriffNode\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\CryptoGate\Model\GetPrices200Response**](../Model/GetPrices200Response.md)
+[**\GriffNode\Model\GetPrices200Response**](../Model/GetPrices200Response.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ This endpoint does not need any parameter.
 ## `listCryptocurrencies()`
 
 ```php
-listCryptocurrencies(): \CryptoGate\Model\ListCryptocurrencies200Response
+listCryptocurrencies(): \GriffNode\Model\ListCryptocurrencies200Response
 ```
 
 All supported cryptocurrencies and tokens
@@ -80,10 +80,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\MarketDataApi(
+$apiInstance = new GriffNode\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -104,7 +104,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\CryptoGate\Model\ListCryptocurrencies200Response**](../Model/ListCryptocurrencies200Response.md)
+[**\GriffNode\Model\ListCryptocurrencies200Response**](../Model/ListCryptocurrencies200Response.md)
 
 ### Authorization
 
@@ -122,7 +122,7 @@ This endpoint does not need any parameter.
 ## `listMerchantCryptocurrencies()`
 
 ```php
-listMerchantCryptocurrencies(): \CryptoGate\Model\ListCryptocurrencies200Response
+listMerchantCryptocurrencies(): \GriffNode\Model\ListCryptocurrencies200Response
 ```
 
 Cryptocurrencies this merchant has wallets configured for
@@ -135,10 +135,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\MarketDataApi(
+$apiInstance = new GriffNode\Api\MarketDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -159,7 +159,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\CryptoGate\Model\ListCryptocurrencies200Response**](../Model/ListCryptocurrencies200Response.md)
+[**\GriffNode\Model\ListCryptocurrencies200Response**](../Model/ListCryptocurrencies200Response.md)
 
 ### Authorization
 

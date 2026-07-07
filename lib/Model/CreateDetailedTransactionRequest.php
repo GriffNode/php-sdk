@@ -5,13 +5,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Model;
+namespace GriffNode\Model;
 
 use \ArrayAccess;
-use \CryptoGate\ObjectSerializer;
+use \GriffNode\ObjectSerializer;
 
 /**
  * CreateDetailedTransactionRequest Class Doc Comment
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,9 +57,9 @@ class CreateDetailedTransactionRequest implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'crypto' => '\CryptoGate\Model\CryptoSymbol',
-        'currency_fiat' => '\CryptoGate\Model\FiatCurrency',
-        'items' => '\CryptoGate\Model\LineItem[]',
+        'crypto' => '\GriffNode\Model\CryptoSymbol',
+        'currency_fiat' => '\GriffNode\Model\FiatCurrency',
+        'items' => '\GriffNode\Model\LineItem[]',
         'order_id' => 'string',
         'metadata' => 'array<string,string>',
         'customer_email' => 'string',
@@ -354,7 +354,7 @@ class CreateDetailedTransactionRequest implements ModelInterface, ArrayAccess, \
     /**
      * Gets crypto
      *
-     * @return \CryptoGate\Model\CryptoSymbol
+     * @return \GriffNode\Model\CryptoSymbol
      */
     public function getCrypto()
     {
@@ -364,7 +364,7 @@ class CreateDetailedTransactionRequest implements ModelInterface, ArrayAccess, \
     /**
      * Sets crypto
      *
-     * @param \CryptoGate\Model\CryptoSymbol $crypto crypto
+     * @param \GriffNode\Model\CryptoSymbol $crypto crypto
      *
      * @return self
      */
@@ -381,7 +381,7 @@ class CreateDetailedTransactionRequest implements ModelInterface, ArrayAccess, \
     /**
      * Gets currency_fiat
      *
-     * @return \CryptoGate\Model\FiatCurrency|null
+     * @return \GriffNode\Model\FiatCurrency|null
      */
     public function getCurrencyFiat()
     {
@@ -391,7 +391,7 @@ class CreateDetailedTransactionRequest implements ModelInterface, ArrayAccess, \
     /**
      * Sets currency_fiat
      *
-     * @param \CryptoGate\Model\FiatCurrency|null $currency_fiat currency_fiat
+     * @param \GriffNode\Model\FiatCurrency|null $currency_fiat currency_fiat
      *
      * @return self
      */
@@ -408,7 +408,7 @@ class CreateDetailedTransactionRequest implements ModelInterface, ArrayAccess, \
     /**
      * Gets items
      *
-     * @return \CryptoGate\Model\LineItem[]
+     * @return \GriffNode\Model\LineItem[]
      */
     public function getItems()
     {
@@ -418,7 +418,7 @@ class CreateDetailedTransactionRequest implements ModelInterface, ArrayAccess, \
     /**
      * Sets items
      *
-     * @param \CryptoGate\Model\LineItem[] $items items
+     * @param \GriffNode\Model\LineItem[] $items items
      *
      * @return self
      */

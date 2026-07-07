@@ -1,6 +1,6 @@
-# CryptoGate\BillingApi
+# GriffNode\BillingApi
 
-All URIs are relative to https://api.cryptogate.live/v1, except if the operation defines another base path.
+All URIs are relative to https://api.griffnode.com/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -10,7 +10,7 @@ All URIs are relative to https://api.cryptogate.live/v1, except if the operation
 ## `createBillingCheckout()`
 
 ```php
-createBillingCheckout($create_billing_checkout_request): \CryptoGate\Model\TransactionEnvelope
+createBillingCheckout($create_billing_checkout_request): \GriffNode\Model\TransactionEnvelope
 ```
 
 Start a plan upgrade or account top-up
@@ -23,16 +23,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\BillingApi(
+$apiInstance = new GriffNode\Api\BillingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_billing_checkout_request = new \CryptoGate\Model\CreateBillingCheckoutRequest(); // \CryptoGate\Model\CreateBillingCheckoutRequest
+$create_billing_checkout_request = new \GriffNode\Model\CreateBillingCheckoutRequest(); // \GriffNode\Model\CreateBillingCheckoutRequest
 
 try {
     $result = $apiInstance->createBillingCheckout($create_billing_checkout_request);
@@ -46,11 +46,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_billing_checkout_request** | [**\CryptoGate\Model\CreateBillingCheckoutRequest**](../Model/CreateBillingCheckoutRequest.md)|  | |
+| **create_billing_checkout_request** | [**\GriffNode\Model\CreateBillingCheckoutRequest**](../Model/CreateBillingCheckoutRequest.md)|  | |
 
 ### Return type
 
-[**\CryptoGate\Model\TransactionEnvelope**](../Model/TransactionEnvelope.md)
+[**\GriffNode\Model\TransactionEnvelope**](../Model/TransactionEnvelope.md)
 
 ### Authorization
 

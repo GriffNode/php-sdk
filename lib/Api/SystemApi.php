@@ -4,13 +4,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Api;
+namespace GriffNode\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use CryptoGate\ApiException;
-use CryptoGate\Configuration;
-use CryptoGate\HeaderSelector;
-use CryptoGate\ObjectSerializer;
+use GriffNode\ApiException;
+use GriffNode\Configuration;
+use GriffNode\HeaderSelector;
+use GriffNode\ObjectSerializer;
 
 /**
  * SystemApi Class Doc Comment
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -132,9 +132,9 @@ class SystemApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHealth'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \CryptoGate\Model\GetHealth200Response
+     * @return \GriffNode\Model\GetHealth200Response
      */
     public function getHealth(string $contentType = self::contentTypes['getHealth'][0])
     {
@@ -149,9 +149,9 @@ class SystemApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHealth'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \CryptoGate\Model\GetHealth200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\GetHealth200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getHealthWithHttpInfo(string $contentType = self::contentTypes['getHealth'][0])
     {
@@ -182,11 +182,11 @@ class SystemApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\CryptoGate\Model\GetHealth200Response' === '\SplFileObject') {
+                    if ('\GriffNode\Model\GetHealth200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\CryptoGate\Model\GetHealth200Response' !== 'string') {
+                        if ('\GriffNode\Model\GetHealth200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -204,7 +204,7 @@ class SystemApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\CryptoGate\Model\GetHealth200Response', []),
+                        ObjectSerializer::deserialize($content, '\GriffNode\Model\GetHealth200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -223,7 +223,7 @@ class SystemApi
                 );
             }
 
-            $returnType = '\CryptoGate\Model\GetHealth200Response';
+            $returnType = '\GriffNode\Model\GetHealth200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -256,7 +256,7 @@ class SystemApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\GetHealth200Response',
+                        '\GriffNode\Model\GetHealth200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -298,7 +298,7 @@ class SystemApi
      */
     public function getHealthAsyncWithHttpInfo(string $contentType = self::contentTypes['getHealth'][0])
     {
-        $returnType = '\CryptoGate\Model\GetHealth200Response';
+        $returnType = '\GriffNode\Model\GetHealth200Response';
         $request = $this->getHealthRequest($contentType);
 
         return $this->client
@@ -420,11 +420,11 @@ class SystemApi
      *
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto crypto (required)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto crypto (required)
      * @param  string $link Payment-link slug for attribution. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -440,11 +440,11 @@ class SystemApi
      *
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto (required)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto (required)
      * @param  string $link Payment-link slug for attribution. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
-     * @throws \CryptoGate\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -482,7 +482,7 @@ class SystemApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\CryptoGate\Model\Error',
+                        '\GriffNode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -499,7 +499,7 @@ class SystemApi
      *
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto (required)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto (required)
      * @param  string $link Payment-link slug for attribution. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
@@ -523,7 +523,7 @@ class SystemApi
      *
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto (required)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto (required)
      * @param  string $link Payment-link slug for attribution. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
@@ -563,7 +563,7 @@ class SystemApi
      *
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
-     * @param  \CryptoGate\Model\CryptoSymbol $crypto (required)
+     * @param  \GriffNode\Model\CryptoSymbol $crypto (required)
      * @param  string $link Payment-link slug for attribution. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *

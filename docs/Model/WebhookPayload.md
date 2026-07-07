@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **event** | **string** |  |
 **timestamp** | **\DateTime** |  |
 **transaction_id** | **string** |  |
-**status** | [**\CryptoGate\Model\TransactionStatus**](TransactionStatus.md) |  |
-**currency_crypto** | [**\CryptoGate\Model\CryptoSymbol**](CryptoSymbol.md) |  | [optional]
-**currency_fiat** | [**\CryptoGate\Model\FiatCurrency**](FiatCurrency.md) |  | [optional]
+**status** | [**\GriffNode\Model\TransactionStatus**](TransactionStatus.md) |  |
+**currency_crypto** | [**\GriffNode\Model\CryptoSymbol**](CryptoSymbol.md) |  | [optional]
+**currency_fiat** | [**\GriffNode\Model\FiatCurrency**](FiatCurrency.md) |  | [optional]
 **amount_fiat** | **string** | Decimal string. | [optional]
 **amount_usd** | **string** | Decimal string. | [optional]
 **amount_crypto** | **string** | Decimal string. | [optional]

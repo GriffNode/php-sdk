@@ -5,13 +5,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -26,17 +26,17 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Model;
+namespace GriffNode\Model;
 
 use \ArrayAccess;
-use \CryptoGate\ObjectSerializer;
+use \GriffNode\ObjectSerializer;
 
 /**
  * Transaction Class Doc Comment
  *
  * @category Class
  * @description The canonical, curated public view of a transaction (same shape from create, get and list). Internal fields (capability tokens, client_ip, address_index, derivation/db internals) are deliberately NOT exposed.
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,24 +59,24 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'transaction_id' => 'string',
-        'status' => '\CryptoGate\Model\TransactionStatus',
+        'status' => '\GriffNode\Model\TransactionStatus',
         'type' => 'string',
-        'crypto' => '\CryptoGate\Model\CryptoSymbol',
+        'crypto' => '\GriffNode\Model\CryptoSymbol',
         'deposit_address' => 'string',
         'amount_crypto' => 'float',
         'amount_fiat' => 'float',
         'amount_usd' => 'float',
         'amount_paid' => 'float',
         'amount_remaining' => 'float',
-        'currency_fiat' => '\CryptoGate\Model\FiatCurrency',
+        'currency_fiat' => '\GriffNode\Model\FiatCurrency',
         'fiat_to_usd_rate' => 'float',
         'exchange_rate' => 'float',
         'confirmations_required' => 'int',
         'payment_url' => 'string',
         'order_id' => 'string',
         'customer_email' => 'string',
-        'items' => '\CryptoGate\Model\LineItem[]',
-        'payments' => '\CryptoGate\Model\PaymentSplit[]',
+        'items' => '\GriffNode\Model\LineItem[]',
+        'payments' => '\GriffNode\Model\PaymentSplit[]',
         'metadata' => 'array<string,string>',
         'success_url' => 'string',
         'cancel_url' => 'string',
@@ -536,7 +536,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \CryptoGate\Model\TransactionStatus
+     * @return \GriffNode\Model\TransactionStatus
      */
     public function getStatus()
     {
@@ -546,7 +546,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \CryptoGate\Model\TransactionStatus $status status
+     * @param \GriffNode\Model\TransactionStatus $status status
      *
      * @return self
      */
@@ -600,7 +600,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets crypto
      *
-     * @return \CryptoGate\Model\CryptoSymbol
+     * @return \GriffNode\Model\CryptoSymbol
      */
     public function getCrypto()
     {
@@ -610,7 +610,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets crypto
      *
-     * @param \CryptoGate\Model\CryptoSymbol $crypto crypto
+     * @param \GriffNode\Model\CryptoSymbol $crypto crypto
      *
      * @return self
      */
@@ -789,7 +789,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency_fiat
      *
-     * @return \CryptoGate\Model\FiatCurrency
+     * @return \GriffNode\Model\FiatCurrency
      */
     public function getCurrencyFiat()
     {
@@ -799,7 +799,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency_fiat
      *
-     * @param \CryptoGate\Model\FiatCurrency $currency_fiat currency_fiat
+     * @param \GriffNode\Model\FiatCurrency $currency_fiat currency_fiat
      *
      * @return self
      */
@@ -992,7 +992,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \CryptoGate\Model\LineItem[]|null
+     * @return \GriffNode\Model\LineItem[]|null
      */
     public function getItems()
     {
@@ -1002,7 +1002,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \CryptoGate\Model\LineItem[]|null $items items
+     * @param \GriffNode\Model\LineItem[]|null $items items
      *
      * @return self
      */
@@ -1026,7 +1026,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payments
      *
-     * @return \CryptoGate\Model\PaymentSplit[]|null
+     * @return \GriffNode\Model\PaymentSplit[]|null
      */
     public function getPayments()
     {
@@ -1036,7 +1036,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payments
      *
-     * @param \CryptoGate\Model\PaymentSplit[]|null $payments On-chain payments detected toward this transaction.
+     * @param \GriffNode\Model\PaymentSplit[]|null $payments On-chain payments detected toward this transaction.
      *
      * @return self
      */

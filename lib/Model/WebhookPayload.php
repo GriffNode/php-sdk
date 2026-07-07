@@ -5,13 +5,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -26,17 +26,17 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Model;
+namespace GriffNode\Model;
 
 use \ArrayAccess;
-use \CryptoGate\ObjectSerializer;
+use \GriffNode\ObjectSerializer;
 
 /**
  * WebhookPayload Class Doc Comment
  *
  * @category Class
  * @description Payment-event payload. AMOUNTS ARE STRINGS (e.g. \&quot;100.00\&quot;, \&quot;0.00109462\&quot;) to preserve decimal precision — parse before arithmetic.
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
         'event' => 'string',
         'timestamp' => '\DateTime',
         'transaction_id' => 'string',
-        'status' => '\CryptoGate\Model\TransactionStatus',
-        'currency_crypto' => '\CryptoGate\Model\CryptoSymbol',
-        'currency_fiat' => '\CryptoGate\Model\FiatCurrency',
+        'status' => '\GriffNode\Model\TransactionStatus',
+        'currency_crypto' => '\GriffNode\Model\CryptoSymbol',
+        'currency_fiat' => '\GriffNode\Model\FiatCurrency',
         'amount_fiat' => 'string',
         'amount_usd' => 'string',
         'amount_crypto' => 'string',
@@ -507,7 +507,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \CryptoGate\Model\TransactionStatus
+     * @return \GriffNode\Model\TransactionStatus
      */
     public function getStatus()
     {
@@ -517,7 +517,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \CryptoGate\Model\TransactionStatus $status status
+     * @param \GriffNode\Model\TransactionStatus $status status
      *
      * @return self
      */
@@ -534,7 +534,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency_crypto
      *
-     * @return \CryptoGate\Model\CryptoSymbol|null
+     * @return \GriffNode\Model\CryptoSymbol|null
      */
     public function getCurrencyCrypto()
     {
@@ -544,7 +544,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency_crypto
      *
-     * @param \CryptoGate\Model\CryptoSymbol|null $currency_crypto currency_crypto
+     * @param \GriffNode\Model\CryptoSymbol|null $currency_crypto currency_crypto
      *
      * @return self
      */
@@ -561,7 +561,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency_fiat
      *
-     * @return \CryptoGate\Model\FiatCurrency|null
+     * @return \GriffNode\Model\FiatCurrency|null
      */
     public function getCurrencyFiat()
     {
@@ -571,7 +571,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency_fiat
      *
-     * @param \CryptoGate\Model\FiatCurrency|null $currency_fiat currency_fiat
+     * @param \GriffNode\Model\FiatCurrency|null $currency_fiat currency_fiat
      *
      * @return self
      */

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | [**\CryptoGate\Model\CryptoSymbol**](CryptoSymbol.md) |  | [optional]
+**symbol** | [**\GriffNode\Model\CryptoSymbol**](CryptoSymbol.md) |  | [optional]
 **name** | **string** |  | [optional]
 **blockchain** | **string** |  | [optional]
 **network** | **string** |  | [optional]

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tier** | [**\CryptoGate\Model\PlanTier**](PlanTier.md) |  | [optional]
+**tier** | [**\GriffNode\Model\PlanTier**](PlanTier.md) |  | [optional]
 **monthly_price_usd** | **float** |  | [optional]
 **yearly_price_usd** | **float** |  | [optional]
 **monthly_transaction_limit** | **int** |  | [optional]

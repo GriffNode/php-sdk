@@ -5,13 +5,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * CryptoGate API
+ * GriffNode API
  *
  * Accept Bitcoin, Litecoin, Dogecoin, Dash, Ethereum and ERC-20 tokens. Server-to-server, authenticated with a secret API key (`Authorization: Bearer sk_live_…` for live, or `sk_test_…` for test mode — same base URL). All monetary amounts in API responses are JSON numbers; **webhook** amounts are strings to preserve decimal precision (see the `webhooks` section).  **Rate limits.** Every request is rate-limited per API key in two windows — per minute and per hour — by plan tier (min/hour): starter 30/500, business 100/2000, professional 300/5000, enterprise 1000/20000. Every response carries `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` (Unix seconds) for the per-minute window. On `429` the body is `error: \"RATE_LIMIT_EXCEEDED\"` (either window) with a `Retry-After` header (seconds) — clients should retry after it. A separate `429` with `error: \"MONTHLY_LIMIT_REACHED\"` means the plan's monthly transaction quota (not the request rate).
  *
@@ -26,17 +26,17 @@
  * Do not edit the class manually.
  */
 
-namespace CryptoGate\Model;
+namespace GriffNode\Model;
 
 use \ArrayAccess;
-use \CryptoGate\ObjectSerializer;
+use \GriffNode\ObjectSerializer;
 
 /**
  * PaymentSplit Class Doc Comment
  *
  * @category Class
  * @description One on-chain payment toward the transaction.
- * @package  CryptoGate
+ * @package  GriffNode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -338,7 +338,7 @@ class PaymentSplit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets txid
      *
-     * @param string|null $txid On-chain transaction hash (blockchain id, NOT the CryptoGate transaction_id).
+     * @param string|null $txid On-chain transaction hash (blockchain id, NOT the GriffNode transaction_id).
      *
      * @return self
      */

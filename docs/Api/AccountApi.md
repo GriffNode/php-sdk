@@ -1,20 +1,20 @@
-# CryptoGate\AccountApi
+# GriffNode\AccountApi
 
-All URIs are relative to https://api.cryptogate.live/v1, except if the operation defines another base path.
+All URIs are relative to https://api.griffnode.com/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getAccount()**](AccountApi.md#getAccount) | **GET** /account | Merchant plan, usage and limits |
 | [**getStats()**](AccountApi.md#getStats) | **GET** /stats | Merchant transaction analytics |
 | [**listBalances()**](AccountApi.md#listBalances) | **GET** /balances | On-platform balances (for overage/top-up; NOT crypto settlement) |
-| [**listInvoices()**](AccountApi.md#listInvoices) | **GET** /invoices | CryptoGate billing invoices (platform ↔ merchant) |
+| [**listInvoices()**](AccountApi.md#listInvoices) | **GET** /invoices | GriffNode billing invoices (platform ↔ merchant) |
 | [**listPlans()**](AccountApi.md#listPlans) | **GET** /plans | Plan catalogue and pricing |
 
 
 ## `getAccount()`
 
 ```php
-getAccount(): \CryptoGate\Model\GetAccount200Response
+getAccount(): \GriffNode\Model\GetAccount200Response
 ```
 
 Merchant plan, usage and limits
@@ -27,10 +27,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\AccountApi(
+$apiInstance = new GriffNode\Api\AccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\CryptoGate\Model\GetAccount200Response**](../Model/GetAccount200Response.md)
+[**\GriffNode\Model\GetAccount200Response**](../Model/GetAccount200Response.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 ## `getStats()`
 
 ```php
-getStats(): \CryptoGate\Model\GetStats200Response
+getStats(): \GriffNode\Model\GetStats200Response
 ```
 
 Merchant transaction analytics
@@ -82,10 +82,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\AccountApi(
+$apiInstance = new GriffNode\Api\AccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -106,7 +106,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\CryptoGate\Model\GetStats200Response**](../Model/GetStats200Response.md)
+[**\GriffNode\Model\GetStats200Response**](../Model/GetStats200Response.md)
 
 ### Authorization
 
@@ -124,7 +124,7 @@ This endpoint does not need any parameter.
 ## `listBalances()`
 
 ```php
-listBalances(): \CryptoGate\Model\ListBalances200Response
+listBalances(): \GriffNode\Model\ListBalances200Response
 ```
 
 On-platform balances (for overage/top-up; NOT crypto settlement)
@@ -137,10 +137,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\AccountApi(
+$apiInstance = new GriffNode\Api\AccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -161,7 +161,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\CryptoGate\Model\ListBalances200Response**](../Model/ListBalances200Response.md)
+[**\GriffNode\Model\ListBalances200Response**](../Model/ListBalances200Response.md)
 
 ### Authorization
 
@@ -179,10 +179,10 @@ This endpoint does not need any parameter.
 ## `listInvoices()`
 
 ```php
-listInvoices($limit, $offset): \CryptoGate\Model\ListInvoices200Response
+listInvoices($limit, $offset): \GriffNode\Model\ListInvoices200Response
 ```
 
-CryptoGate billing invoices (platform ↔ merchant)
+GriffNode billing invoices (platform ↔ merchant)
 
 ### Example
 
@@ -192,10 +192,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\AccountApi(
+$apiInstance = new GriffNode\Api\AccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -221,7 +221,7 @@ try {
 
 ### Return type
 
-[**\CryptoGate\Model\ListInvoices200Response**](../Model/ListInvoices200Response.md)
+[**\GriffNode\Model\ListInvoices200Response**](../Model/ListInvoices200Response.md)
 
 ### Authorization
 
@@ -239,7 +239,7 @@ try {
 ## `listPlans()`
 
 ```php
-listPlans(): \CryptoGate\Model\ListPlans200Response
+listPlans(): \GriffNode\Model\ListPlans200Response
 ```
 
 Plan catalogue and pricing
@@ -252,10 +252,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer authorization: SecretKey
-$config = CryptoGate\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = GriffNode\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new CryptoGate\Api\AccountApi(
+$apiInstance = new GriffNode\Api\AccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -276,7 +276,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\CryptoGate\Model\ListPlans200Response**](../Model/ListPlans200Response.md)
+[**\GriffNode\Model\ListPlans200Response**](../Model/ListPlans200Response.md)
 
 ### Authorization
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**crypto** | [**\CryptoGate\Model\CryptoSymbol**](CryptoSymbol.md) |  |
-**currency_fiat** | [**\CryptoGate\Model\FiatCurrency**](FiatCurrency.md) |  | [optional]
-**items** | [**\CryptoGate\Model\LineItem[]**](LineItem.md) |  |
+**crypto** | [**\GriffNode\Model\CryptoSymbol**](CryptoSymbol.md) |  |
+**currency_fiat** | [**\GriffNode\Model\FiatCurrency**](FiatCurrency.md) |  | [optional]
+**items** | [**\GriffNode\Model\LineItem[]**](LineItem.md) |  |
 **order_id** | **string** |  |
 **metadata** | **array<string,string>** | Free-form key/value (≤20 keys, string values ≤500 chars, ≤4 KB total). | [optional]
 **customer_email** | **string** |  | [optional]
