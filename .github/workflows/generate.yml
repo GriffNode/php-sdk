@@ -17,7 +17,7 @@ jobs:
             openapitools/openapi-generator-cli:v7.10.0 \
             generate -i /local/openapi.yaml -g php -o /local \
             --skip-validate-spec \
-            --additional-properties=invokerPackage=GriffNode,composerVendorName=griffnode,composerProjectName=php-sdk,artifactVersion=1.0.0,artifactUrl=https://griffnode.com,developerOrganization=GriffNode,developerOrganizationUrl=https://griffnode.com,licenseName=Apache-2.0
+            --additional-properties=invokerPackage=GriffNode,composerPackageName=griffnode/php-sdk,artifactVersion=1.0.0,artifactUrl=https://griffnode.com,developerOrganization=GriffNode,developerOrganizationUrl=https://griffnode.com,licenseName=Apache-2.0
       - name: Commit regenerated SDK
         run: |
           git config user.name  "github-actions[bot]"
