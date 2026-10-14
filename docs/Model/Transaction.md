@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **transaction_id** | **string** |  |
 **status** | [**\GriffNode\Model\TransactionStatus**](TransactionStatus.md) |  |
+**exception** | [**\GriffNode\Model\TransactionException**](TransactionException.md) |  | [optional]
 **type** | **string** |  | [optional]
 **crypto** | [**\GriffNode\Model\CryptoSymbol**](CryptoSymbol.md) |  |
 **deposit_address** | **string** |  | [optional]
