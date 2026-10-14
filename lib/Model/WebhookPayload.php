@@ -62,6 +62,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
         'timestamp' => '\DateTime',
         'transaction_id' => 'string',
         'status' => '\GriffNode\Model\TransactionStatus',
+        'exception' => '\GriffNode\Model\TransactionException',
         'currency_crypto' => '\GriffNode\Model\CryptoSymbol',
         'currency_fiat' => '\GriffNode\Model\FiatCurrency',
         'amount_fiat' => 'string',
@@ -84,6 +85,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
         'timestamp' => 'date-time',
         'transaction_id' => null,
         'status' => null,
+        'exception' => null,
         'currency_crypto' => null,
         'currency_fiat' => null,
         'amount_fiat' => null,
@@ -104,6 +106,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
         'timestamp' => false,
         'transaction_id' => false,
         'status' => false,
+        'exception' => false,
         'currency_crypto' => false,
         'currency_fiat' => false,
         'amount_fiat' => false,
@@ -204,6 +207,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
         'timestamp' => 'timestamp',
         'transaction_id' => 'transaction_id',
         'status' => 'status',
+        'exception' => 'exception',
         'currency_crypto' => 'currency_crypto',
         'currency_fiat' => 'currency_fiat',
         'amount_fiat' => 'amount_fiat',
@@ -224,6 +228,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
         'timestamp' => 'setTimestamp',
         'transaction_id' => 'setTransactionId',
         'status' => 'setStatus',
+        'exception' => 'setException',
         'currency_crypto' => 'setCurrencyCrypto',
         'currency_fiat' => 'setCurrencyFiat',
         'amount_fiat' => 'setAmountFiat',
@@ -244,6 +249,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
         'timestamp' => 'getTimestamp',
         'transaction_id' => 'getTransactionId',
         'status' => 'getStatus',
+        'exception' => 'getException',
         'currency_crypto' => 'getCurrencyCrypto',
         'currency_fiat' => 'getCurrencyFiat',
         'amount_fiat' => 'getAmountFiat',
@@ -302,6 +308,8 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENT_PARTIAL = 'payment.partial';
     public const EVENT_EXPIRED = 'payment.expired';
     public const EVENT_FAILED = 'payment.failed';
+    public const EVENT_PAID_LATE = 'payment.paid_late';
+    public const EVENT_NEEDS_REVIEW = 'payment.needs_review';
 
     /**
      * Gets allowable values of the enum
@@ -318,6 +326,8 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENT_PARTIAL,
             self::EVENT_EXPIRED,
             self::EVENT_FAILED,
+            self::EVENT_PAID_LATE,
+            self::EVENT_NEEDS_REVIEW,
         ];
     }
 
@@ -340,6 +350,7 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('timestamp', $data ?? [], null);
         $this->setIfExists('transaction_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('exception', $data ?? [], null);
         $this->setIfExists('currency_crypto', $data ?? [], null);
         $this->setIfExists('currency_fiat', $data ?? [], null);
         $this->setIfExists('amount_fiat', $data ?? [], null);
@@ -527,6 +538,33 @@ class WebhookPayload implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets exception
+     *
+     * @return \GriffNode\Model\TransactionException|null
+     */
+    public function getException()
+    {
+        return $this->container['exception'];
+    }
+
+    /**
+     * Sets exception
+     *
+     * @param \GriffNode\Model\TransactionException|null $exception exception
+     *
+     * @return self
+     */
+    public function setException($exception)
+    {
+        if (is_null($exception)) {
+            throw new \InvalidArgumentException('non-nullable exception cannot be null');
+        }
+        $this->container['exception'] = $exception;
 
         return $this;
     }

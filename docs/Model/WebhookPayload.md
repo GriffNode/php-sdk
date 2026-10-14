@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **timestamp** | **\DateTime** |  |
 **transaction_id** | **string** |  |
 **status** | [**\GriffNode\Model\TransactionStatus**](TransactionStatus.md) |  |
+**exception** | [**\GriffNode\Model\TransactionException**](TransactionException.md) |  | [optional]
 **currency_crypto** | [**\GriffNode\Model\CryptoSymbol**](CryptoSymbol.md) |  | [optional]
 **currency_fiat** | [**\GriffNode\Model\FiatCurrency**](FiatCurrency.md) |  | [optional]
 **amount_fiat** | **string** | Decimal string. | [optional]

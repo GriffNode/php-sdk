@@ -60,6 +60,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'transaction_id' => 'string',
         'status' => '\GriffNode\Model\TransactionStatus',
+        'exception' => '\GriffNode\Model\TransactionException',
         'type' => 'string',
         'crypto' => '\GriffNode\Model\CryptoSymbol',
         'deposit_address' => 'string',
@@ -95,6 +96,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'transaction_id' => null,
         'status' => null,
+        'exception' => null,
         'type' => null,
         'crypto' => null,
         'deposit_address' => null,
@@ -128,6 +130,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'transaction_id' => false,
         'status' => false,
+        'exception' => false,
         'type' => false,
         'crypto' => false,
         'deposit_address' => false,
@@ -241,6 +244,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'transaction_id' => 'transaction_id',
         'status' => 'status',
+        'exception' => 'exception',
         'type' => 'type',
         'crypto' => 'crypto',
         'deposit_address' => 'deposit_address',
@@ -274,6 +278,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'transaction_id' => 'setTransactionId',
         'status' => 'setStatus',
+        'exception' => 'setException',
         'type' => 'setType',
         'crypto' => 'setCrypto',
         'deposit_address' => 'setDepositAddress',
@@ -307,6 +312,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'transaction_id' => 'getTransactionId',
         'status' => 'getStatus',
+        'exception' => 'getException',
         'type' => 'getType',
         'crypto' => 'getCrypto',
         'deposit_address' => 'getDepositAddress',
@@ -406,6 +412,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('transaction_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('exception', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('crypto', $data ?? [], null);
         $this->setIfExists('deposit_address', $data ?? [], null);
@@ -556,6 +563,33 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets exception
+     *
+     * @return \GriffNode\Model\TransactionException|null
+     */
+    public function getException()
+    {
+        return $this->container['exception'];
+    }
+
+    /**
+     * Sets exception
+     *
+     * @param \GriffNode\Model\TransactionException|null $exception exception
+     *
+     * @return self
+     */
+    public function setException($exception)
+    {
+        if (is_null($exception)) {
+            throw new \InvalidArgumentException('non-nullable exception cannot be null');
+        }
+        $this->container['exception'] = $exception;
 
         return $this;
     }
