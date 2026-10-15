@@ -62,7 +62,7 @@ No authorization required
 ## `hostedCheckoutRedirect()`
 
 ```php
-hostedCheckoutRedirect($pk, $amount, $crypto, $link)
+hostedCheckoutRedirect($pk, $amount, $crypto, $currency, $link)
 ```
 
 Hosted-checkout redirect (browser flow, publishable key)
@@ -85,10 +85,11 @@ $apiInstance = new GriffNode\Api\SystemApi(
 $pk = 'pk_example'; // string | Publishable key, pk_live_… / pk_test_…
 $amount = 'amount_example'; // string | Fiat amount (≥ 1.00 USD equivalent).
 $crypto = new \GriffNode\Model\\GriffNode\Model\CryptoSymbol(); // \GriffNode\Model\CryptoSymbol
-$link = 'link_example'; // string | Payment-link slug for attribution.
+$currency = 'USD'; // string | Fiat currency of `amount`. Ignored when `link` is set: a payment link always uses its own amount and currency.
+$link = 'link_example'; // string | Payment-link slug. The link's own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid).
 
 try {
-    $apiInstance->hostedCheckoutRedirect($pk, $amount, $crypto, $link);
+    $apiInstance->hostedCheckoutRedirect($pk, $amount, $crypto, $currency, $link);
 } catch (Exception $e) {
     echo 'Exception when calling SystemApi->hostedCheckoutRedirect: ', $e->getMessage(), PHP_EOL;
 }
@@ -101,7 +102,8 @@ try {
 | **pk** | **string**| Publishable key, pk_live_… / pk_test_… | |
 | **amount** | **string**| Fiat amount (≥ 1.00 USD equivalent). | |
 | **crypto** | [**\GriffNode\Model\CryptoSymbol**](../Model/.md)|  | |
-| **link** | **string**| Payment-link slug for attribution. | [optional] |
+| **currency** | **string**| Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. | [optional] [default to &#39;USD&#39;] |
+| **link** | **string**| Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid). | [optional] |
 
 ### Return type
 

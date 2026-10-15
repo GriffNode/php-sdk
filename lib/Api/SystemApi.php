@@ -421,16 +421,17 @@ class SystemApi
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
      * @param  \GriffNode\Model\CryptoSymbol $crypto crypto (required)
-     * @param  string $link Payment-link slug for attribution. (optional)
+     * @param  string $currency Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. (optional, default to 'USD')
+     * @param  string $link Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function hostedCheckoutRedirect($pk, $amount, $crypto, $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
+    public function hostedCheckoutRedirect($pk, $amount, $crypto, $currency = 'USD', $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
     {
-        $this->hostedCheckoutRedirectWithHttpInfo($pk, $amount, $crypto, $link, $contentType);
+        $this->hostedCheckoutRedirectWithHttpInfo($pk, $amount, $crypto, $currency, $link, $contentType);
     }
 
     /**
@@ -441,16 +442,17 @@ class SystemApi
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
      * @param  \GriffNode\Model\CryptoSymbol $crypto (required)
-     * @param  string $link Payment-link slug for attribution. (optional)
+     * @param  string $currency Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. (optional, default to 'USD')
+     * @param  string $link Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function hostedCheckoutRedirectWithHttpInfo($pk, $amount, $crypto, $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
+    public function hostedCheckoutRedirectWithHttpInfo($pk, $amount, $crypto, $currency = 'USD', $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
     {
-        $request = $this->hostedCheckoutRedirectRequest($pk, $amount, $crypto, $link, $contentType);
+        $request = $this->hostedCheckoutRedirectRequest($pk, $amount, $crypto, $currency, $link, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -500,15 +502,16 @@ class SystemApi
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
      * @param  \GriffNode\Model\CryptoSymbol $crypto (required)
-     * @param  string $link Payment-link slug for attribution. (optional)
+     * @param  string $currency Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. (optional, default to 'USD')
+     * @param  string $link Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function hostedCheckoutRedirectAsync($pk, $amount, $crypto, $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
+    public function hostedCheckoutRedirectAsync($pk, $amount, $crypto, $currency = 'USD', $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
     {
-        return $this->hostedCheckoutRedirectAsyncWithHttpInfo($pk, $amount, $crypto, $link, $contentType)
+        return $this->hostedCheckoutRedirectAsyncWithHttpInfo($pk, $amount, $crypto, $currency, $link, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -524,16 +527,17 @@ class SystemApi
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
      * @param  \GriffNode\Model\CryptoSymbol $crypto (required)
-     * @param  string $link Payment-link slug for attribution. (optional)
+     * @param  string $currency Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. (optional, default to 'USD')
+     * @param  string $link Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function hostedCheckoutRedirectAsyncWithHttpInfo($pk, $amount, $crypto, $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
+    public function hostedCheckoutRedirectAsyncWithHttpInfo($pk, $amount, $crypto, $currency = 'USD', $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
     {
         $returnType = '';
-        $request = $this->hostedCheckoutRedirectRequest($pk, $amount, $crypto, $link, $contentType);
+        $request = $this->hostedCheckoutRedirectRequest($pk, $amount, $crypto, $currency, $link, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -564,13 +568,14 @@ class SystemApi
      * @param  string $pk Publishable key, pk_live_… / pk_test_… (required)
      * @param  string $amount Fiat amount (≥ 1.00 USD equivalent). (required)
      * @param  \GriffNode\Model\CryptoSymbol $crypto (required)
-     * @param  string $link Payment-link slug for attribution. (optional)
+     * @param  string $currency Fiat currency of &#x60;amount&#x60;. Ignored when &#x60;link&#x60; is set: a payment link always uses its own amount and currency. (optional, default to 'USD')
+     * @param  string $link Payment-link slug. The link&#39;s own amount, currency, expiry and single-use rules apply (410 if expired, 409 if a single-use link was already paid). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hostedCheckoutRedirect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function hostedCheckoutRedirectRequest($pk, $amount, $crypto, $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
+    public function hostedCheckoutRedirectRequest($pk, $amount, $crypto, $currency = 'USD', $link = null, string $contentType = self::contentTypes['hostedCheckoutRedirect'][0])
     {
 
         // verify the required parameter 'pk' is set
@@ -593,6 +598,7 @@ class SystemApi
                 'Missing the required parameter $crypto when calling hostedCheckoutRedirect'
             );
         }
+
 
 
 
@@ -629,6 +635,15 @@ class SystemApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $currency,
+            'currency', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

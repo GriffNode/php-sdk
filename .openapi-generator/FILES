@@ -43,6 +43,7 @@ docs/Model/Pagination.md
 docs/Model/PaymentSplit.md
 docs/Model/Plan.md
 docs/Model/PlanTier.md
+docs/Model/RecurringWebhookPayload.md
 docs/Model/Transaction.md
 docs/Model/TransactionEnvelope.md
 docs/Model/TransactionException.md
@@ -95,6 +96,7 @@ lib/Model/Pagination.php
 lib/Model/PaymentSplit.php
 lib/Model/Plan.php
 lib/Model/PlanTier.php
+lib/Model/RecurringWebhookPayload.php
 lib/Model/Transaction.php
 lib/Model/TransactionEnvelope.php
 lib/Model/TransactionException.php
@@ -102,4 +104,4 @@ lib/Model/TransactionStatus.php
 lib/Model/WebhookPayload.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/TransactionExceptionTest.php
+test/Model/RecurringWebhookPayloadTest.php
