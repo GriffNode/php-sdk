@@ -104,4 +104,3 @@ lib/Model/TransactionStatus.php
 lib/Model/WebhookPayload.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/RecurringWebhookPayloadTest.php

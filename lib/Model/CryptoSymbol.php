@@ -57,6 +57,8 @@ class CryptoSymbol
 
     public const USDC = 'USDC';
 
+    public const EURC = 'EURC';
+
     public const DAI = 'DAI';
 
     public const WBTC = 'WBTC';
@@ -87,6 +89,7 @@ class CryptoSymbol
             self::ETH,
             self::USDT,
             self::USDC,
+            self::EURC,
             self::DAI,
             self::WBTC,
             self::SHIB,
