@@ -63,6 +63,8 @@ class CryptoSymbol
 
     public const WBTC = 'WBTC';
 
+    public const WETH = 'WETH';
+
     public const SHIB = 'SHIB';
 
     public const PEPE = 'PEPE';
@@ -71,9 +73,7 @@ class CryptoSymbol
 
     public const UNI = 'UNI';
 
-    public const AAVE = 'AAVE';
-
-    public const MKR = 'MKR';
+    public const LEO = 'LEO';
 
     /**
      * Gets allowable values of the enum
@@ -92,12 +92,12 @@ class CryptoSymbol
             self::EURC,
             self::DAI,
             self::WBTC,
+            self::WETH,
             self::SHIB,
             self::PEPE,
             self::LINK,
             self::UNI,
-            self::AAVE,
-            self::MKR
+            self::LEO
         ];
     }
 }

@@ -142,7 +142,7 @@ class TransactionsApi
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error
+     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function createDetailedTransaction($create_detailed_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createDetailedTransaction'][0])
     {
@@ -161,7 +161,7 @@ class TransactionsApi
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDetailedTransactionWithHttpInfo($create_detailed_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createDetailedTransaction'][0])
     {
@@ -246,33 +246,6 @@ class TransactionsApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\GriffNode\Model\Error' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 402:
                     if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -415,14 +388,6 @@ class TransactionsApi
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\GriffNode\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\GriffNode\Model\Error',
@@ -638,7 +603,7 @@ class TransactionsApi
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\InlineObject|\GriffNode\Model\Error
+     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\InlineObject|\GriffNode\Model\Error
      */
     public function createTransaction($create_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createTransaction'][0])
     {
@@ -657,7 +622,7 @@ class TransactionsApi
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\InlineObject|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\InlineObject|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTransactionWithHttpInfo($create_transaction_request, $x_idempotency_key = null, string $contentType = self::contentTypes['createTransaction'][0])
     {
@@ -742,33 +707,6 @@ class TransactionsApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\GriffNode\Model\Error' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 402:
                     if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -938,14 +876,6 @@ class TransactionsApi
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\GriffNode\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\GriffNode\Model\Error',

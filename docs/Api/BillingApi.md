@@ -4,7 +4,7 @@ All URIs are relative to https://api.griffnode.com/v1, except if the operation d
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createBillingCheckout()**](BillingApi.md#createBillingCheckout) | **POST** /billing/checkout | Start a plan upgrade or account top-up |
+| [**createBillingCheckout()**](BillingApi.md#createBillingCheckout) | **POST** /billing/checkout | Start a plan upgrade |
 
 
 ## `createBillingCheckout()`
@@ -13,7 +13,7 @@ All URIs are relative to https://api.griffnode.com/v1, except if the operation d
 createBillingCheckout($create_billing_checkout_request): \GriffNode\Model\TransactionEnvelope
 ```
 
-Start a plan upgrade or account top-up
+Start a plan upgrade
 
 ### Example
 

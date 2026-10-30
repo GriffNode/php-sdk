@@ -492,6 +492,7 @@ class Plan implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets overage_cost_per_tx
      *
      * @return float|null
+     * @deprecated
      */
     public function getOverageCostPerTx()
     {
@@ -501,9 +502,10 @@ class Plan implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets overage_cost_per_tx
      *
-     * @param float|null $overage_cost_per_tx overage_cost_per_tx
+     * @param float|null $overage_cost_per_tx Always 0. Plans have a hard monthly limit and no overage.
      *
      * @return self
+     * @deprecated
      */
     public function setOverageCostPerTx($overage_cost_per_tx)
     {

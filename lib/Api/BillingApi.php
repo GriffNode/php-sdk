@@ -125,14 +125,14 @@ class BillingApi
     /**
      * Operation createBillingCheckout
      *
-     * Start a plan upgrade or account top-up
+     * Start a plan upgrade
      *
      * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error
+     * @return \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error
      */
     public function createBillingCheckout($create_billing_checkout_request, string $contentType = self::contentTypes['createBillingCheckout'][0])
     {
@@ -143,14 +143,14 @@ class BillingApi
     /**
      * Operation createBillingCheckoutWithHttpInfo
      *
-     * Start a plan upgrade or account top-up
+     * Start a plan upgrade
      *
      * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GriffNode\Model\TransactionEnvelope|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBillingCheckoutWithHttpInfo($create_billing_checkout_request, string $contentType = self::contentTypes['createBillingCheckout'][0])
     {
@@ -208,33 +208,6 @@ class BillingApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\GriffNode\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\GriffNode\Model\Error' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\GriffNode\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 402:
                     if ('\GriffNode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -349,14 +322,6 @@ class BillingApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 402:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\GriffNode\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -373,7 +338,7 @@ class BillingApi
     /**
      * Operation createBillingCheckoutAsync
      *
-     * Start a plan upgrade or account top-up
+     * Start a plan upgrade
      *
      * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation
@@ -394,7 +359,7 @@ class BillingApi
     /**
      * Operation createBillingCheckoutAsyncWithHttpInfo
      *
-     * Start a plan upgrade or account top-up
+     * Start a plan upgrade
      *
      * @param  \GriffNode\Model\CreateBillingCheckoutRequest $create_billing_checkout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBillingCheckout'] to see the possible values for this operation

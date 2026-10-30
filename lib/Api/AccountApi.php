@@ -861,13 +861,14 @@ class AccountApi
     /**
      * Operation listBalances
      *
-     * On-platform balances (for overage/top-up; NOT crypto settlement)
+     * Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBalances'] to see the possible values for this operation
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \GriffNode\Model\ListBalances200Response|\GriffNode\Model\Error|\GriffNode\Model\Error
+     * @deprecated
      */
     public function listBalances(string $contentType = self::contentTypes['listBalances'][0])
     {
@@ -878,13 +879,14 @@ class AccountApi
     /**
      * Operation listBalancesWithHttpInfo
      *
-     * On-platform balances (for overage/top-up; NOT crypto settlement)
+     * Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBalances'] to see the possible values for this operation
      *
      * @throws \GriffNode\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \GriffNode\Model\ListBalances200Response|\GriffNode\Model\Error|\GriffNode\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function listBalancesWithHttpInfo(string $contentType = self::contentTypes['listBalances'][0])
     {
@@ -1072,12 +1074,13 @@ class AccountApi
     /**
      * Operation listBalancesAsync
      *
-     * On-platform balances (for overage/top-up; NOT crypto settlement)
+     * Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBalances'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listBalancesAsync(string $contentType = self::contentTypes['listBalances'][0])
     {
@@ -1092,12 +1095,13 @@ class AccountApi
     /**
      * Operation listBalancesAsyncWithHttpInfo
      *
-     * On-platform balances (for overage/top-up; NOT crypto settlement)
+     * Deprecated: always an empty list. GriffNode keeps no on-platform balance (no overage, no top-ups); crypto settles straight to your wallet.
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBalances'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listBalancesAsyncWithHttpInfo(string $contentType = self::contentTypes['listBalances'][0])
     {
@@ -1147,6 +1151,7 @@ class AccountApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function listBalancesRequest(string $contentType = self::contentTypes['listBalances'][0])
     {
